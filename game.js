@@ -29,17 +29,13 @@ let timeLimit = setInterval(()=>{
 
 
 
-var num1 = num1Gen()
-var num2 = num2Gen()
-var num3 = num3Gen(num1,num2)
 
+numGen()
 
 plus.addEventListener("click",()=>{
     if (num1+num2==num3){
         time = 20
-        num1 = num1Gen()
-        num2 = num2Gen()
-        num3 = num3Gen(num1,num2)
+        numGen()
         score++
         console.log(score)
     }
@@ -53,9 +49,7 @@ plus.addEventListener("click",()=>{
 minus.addEventListener("click",()=>{
     if (num1-num2==num3){
         time = 20
-        num1 = num1Gen()
-        num2 = num2Gen()
-        num3 = num3Gen(num1,num2)
+        numGen()
         score++
         console.log(score)
     }
@@ -69,9 +63,7 @@ minus.addEventListener("click",()=>{
 mul.addEventListener("click",()=>{
     if (num1*num2==num3){
         time = 20
-        num1 = num1Gen()
-        num2 = num2Gen()
-        num3 = num3Gen(num1,num2)
+        numGen()
         score++
         console.log(score)
     }
@@ -85,9 +77,7 @@ mul.addEventListener("click",()=>{
 divide.addEventListener("click",()=>{
     if (num1/num2==num3){
         time = 20
-        num1 = num1Gen()
-        num2 = num2Gen()
-        num3 = num3Gen(num1,num2)
+        numGen()
         score++
         console.log(score)
     }
@@ -101,9 +91,7 @@ divide.addEventListener("click",()=>{
 modulus.addEventListener("click",()=>{
     if (num1%num2==num3){
         time = 20
-        num1 = num1Gen()
-        num2 = num2Gen()
-        num3 = num3Gen(num1,num2)
+        numGen()
         score++
         console.log(score)
     }
@@ -159,4 +147,10 @@ function num3Gen(num1,num2){
             return num3
         }
     }
+}
+
+function numGen(){
+    num1 = num1Gen()
+    num2 = num2Gen()
+    num3 = num3Gen(num1,num2)
 }
