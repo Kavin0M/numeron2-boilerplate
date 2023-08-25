@@ -31,9 +31,7 @@ button.addEventListener("click",(e)=>{``
 
 function timeLimitCheck(){
     if (time<0){
-        localStorage.setItem("score",score)
-        window.open("gameover.html","_self")
-        clearInterval(timeLimit)
+        endGame()
     }
 }
 
@@ -56,8 +54,12 @@ function checkAns(id){
         console.log(score)
     }
     else{
-        localStorage.setItem("score",score)
-        clearInterval(timeLimit)
-        window.open("gameover.html","_self")
+        endGame()
     }
+}
+
+function endGame(){
+    localStorage.setItem("score",score)
+    clearInterval(timeLimit)
+    window.open("gameover.html","_self")
 }
