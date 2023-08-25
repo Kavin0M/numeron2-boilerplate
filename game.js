@@ -23,18 +23,11 @@ let timeLimit = setInterval(()=>{
     timeLimitCheck()
 },1000)
 
-
-
-
 numGen()
 
 button.addEventListener("click",(e)=>{``
     checkAns(e.target.id)
 })
-
-
-
-
 
 function timeLimitCheck(){
     if (time<0){
@@ -44,29 +37,14 @@ function timeLimitCheck(){
     }
 }
 
-function num1Gen(){
+function numGen(){
     num1 = Math.floor(Math.random()*101)
-    number1.innerText = num1
-    return num1
-}
-
-function num2Gen(){
     num2 = Math.floor(Math.random()*101)
+    number1.innerText = num1
     number2.innerText = num2
-    return num2
-}
-
-function num3Gen(num1,num2){
     arr = [num1+num2,num1*num2,(num1/num2).toFixed(1),num1-num2,num1%num2]
     num3 = arr[Math.floor(Math.random()*5)]
     number3.innerText = num3
-    return num3
-}
-
-function numGen(){
-    num1 = num1Gen()
-    num2 = num2Gen()
-    num3 = num3Gen(num1,num2)
 }
 
 function checkAns(id){
