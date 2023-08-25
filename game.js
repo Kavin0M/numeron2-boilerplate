@@ -20,7 +20,9 @@ let time = 20
 let timeLimit = setInterval(()=>{
     timer.innerText = time
     time--
-    timeLimitCheck()
+    if (time<0){
+        endGame()
+    }
 },1000)
 
 numGen()
@@ -28,12 +30,6 @@ numGen()
 button.addEventListener("click",(e)=>{``
     checkAns(e.target.id)
 })
-
-function timeLimitCheck(){
-    if (time<0){
-        endGame()
-    }
-}
 
 function numGen(){
     num1 = Math.floor(Math.random()*101)
