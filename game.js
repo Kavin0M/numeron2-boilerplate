@@ -13,14 +13,10 @@
 const number1 = document.getElementById("number1")
 const number2 = document.getElementById("number2")
 const number3 = document.getElementById("number3")
-const plus = document.getElementById("plus")
-const minus = document.getElementById("minus")
-const mul = document.getElementById("mul")
-const divide = document.getElementById("divide")
-const modulus = document.getElementById("modulus")
+const button = document.getElementById("buttons")
 const timer = document.getElementById("timer")
-var score = 0
-var time = 20
+let score = 0
+let time = 20
 let timeLimit = setInterval(()=>{
     timer.innerText = time
     time--
@@ -32,74 +28,8 @@ let timeLimit = setInterval(()=>{
 
 numGen()
 
-plus.addEventListener("click",()=>{
-    if (num1+num2==num3){
-        time = 20
-        numGen()
-        score++
-        console.log(score)
-    }
-    else{
-        localStorage.setItem("score",score)
-        clearInterval(timeLimit)
-        window.open("gameover.html","_self")
-    }
-})
-
-minus.addEventListener("click",()=>{
-    if (num1-num2==num3){
-        time = 20
-        numGen()
-        score++
-        console.log(score)
-    }
-    else{
-        localStorage.setItem("score",score)
-        clearInterval(timeLimit)
-        window.open("gameover.html","_self")
-    }
-})
-
-mul.addEventListener("click",()=>{
-    if (num1*num2==num3){
-        time = 20
-        numGen()
-        score++
-        console.log(score)
-    }
-    else{
-        localStorage.setItem("score",score)
-        clearInterval(timeLimit)
-        window.open("gameover.html","_self")
-    }
-})
-
-divide.addEventListener("click",()=>{
-    if (num1/num2==num3){
-        time = 20
-        numGen()
-        score++
-        console.log(score)
-    }
-    else{
-        localStorage.setItem("score",score)
-        clearInterval(timeLimit)
-        window.open("gameover.html","_self")
-    }
-})
-
-modulus.addEventListener("click",()=>{
-    if (num1%num2==num3){
-        time = 20
-        numGen()
-        score++
-        console.log(score)
-    }
-    else{
-        localStorage.setItem("score",score)
-        clearInterval(timeLimit)
-        window.open("gameover.html","_self")
-    }
+button.addEventListener("click",(e)=>{``
+    checkAns(e.target.id)
 })
 
 
@@ -127,30 +57,29 @@ function num2Gen(){
 }
 
 function num3Gen(num1,num2){
-    if (num1<num2){
-        var arr = [num1+num2,num1*num2]
-        num3 = arr[Math.floor(Math.random()*2)]
-        number3.innerText = num3
-        return num3
-    }
-    else{
-        if ((num1/num2)%1 === 0){
-            var arr = [num1+num2,num1*num2,num1/num2,num1-num2,num1%num2]
-            num3 = arr[Math.floor(Math.random()*5)]
-            number3.innerText = num3
-            return num3
-        }
-        else{
-            var arr = [num1+num2,num1*num2,num1-num2,num1%num2]
-            num3 = arr[Math.floor(Math.random()*4)]
-            number3.innerText = num3
-            return num3
-        }
-    }
+    arr = [num1+num2,num1*num2,(num1/num2).toFixed(1),num1-num2,num1%num2]
+    num3 = arr[Math.floor(Math.random()*5)]
+    number3.innerText = num3
+    return num3
 }
 
 function numGen(){
     num1 = num1Gen()
     num2 = num2Gen()
     num3 = num3Gen(num1,num2)
+}
+
+function checkAns(id){
+    const index = {plus:0, minus:3, mul:1, divide:2, modulus:4}
+    if (arr[index[id]]==num3){
+        time = 20
+        numGen()
+        score++
+        console.log(score)
+    }
+    else{
+        localStorage.setItem("score",score)
+        clearInterval(timeLimit)
+        window.open("gameover.html","_self")
+    }
 }
